@@ -41,7 +41,7 @@ It merges these two projects [vim-go-ide github](https://github.com/farazdagi/vi
 
 Sets up a bin file to offer some quick options
 
-`curl -s https://github.com/thefynx/docker-govim.git | bash`
+`curl -s https://raw.githubusercontent.com/TheFynx/docker-vimgo/master/install.sh | bash`
 
 ## Usage
 
@@ -51,7 +51,7 @@ Run this image from within your go workspace. You can than edit your project usi
 
 ```
 cd your/go/workspace
-docker run --rm -tiv `pwd`:/go thefynx/vim-go-idea
+docker run --rm -tiv `pwd`:/go thefynx/vim-go-ide
 ```
 
 ### If Installed via Curl Script
