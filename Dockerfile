@@ -1,6 +1,9 @@
 FROM golang:1.6.2
 MAINTAINER Levi Smith
 
+ADD dotfiles/ /
+ENV DEVHOME /home/dev
+
 # install pagkages
 RUN apt-get update                                                      && \
     apt-get install -y sudo ncurses-dev libtolua-dev exuberant-ctags    && \
@@ -20,15 +23,16 @@ RUN apt-get update                                                      && \
     go get github.com/derekparker/delve/cmd/dlv                         && \
     go get golang.org/x/tools/cmd/goimports                             && \
     go get github.com/rogpeppe/godef                                    && \
+    go get golang.org/x/tools/cmd/oracle                                && \
     go get golang.org/x/tools/cmd/gorename                              && \
     go get github.com/golang/lint/golint                                && \
     go get github.com/kisielk/errcheck                                  && \
     go get github.com/jstemmer/gotags                                   && \
-    mv /go/bin/* /usr/local/go/bin                                      && \
 # add dev user
+    mkdir -p /project                                                   && \
     adduser dev --disabled-password --gecos ""                          && \
+    chown -R dev:dev $DEVHOME /go /project                              && \
     echo "ALL            ALL = (ALL) NOPASSWD: ALL" >> /etc/sudoers     && \
-    chown -R dev:dev /home/dev /go                                      && \
 # cleanup
     rm -rf /go/src/* /go/pkg                                            && \
     apt-get remove -y ncurses-dev                                       && \
@@ -36,17 +40,8 @@ RUN apt-get update                                                      && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 USER dev
-ENV HOME /home/dev
-ADD dotfiles/ /
 
 # install vim plugins
-RUN sudo mkdir -p $HOME/.vim/bundle                                     && \
-    sudo chown -R dev $HOME                                             && \
-    sudo chmod -R 755 $HOME                                             && \
-    vim +PluginInstall +qall                                            #&& \
-#   cd  $HOME/.vim/bundle
-# cleanup
-    # rm -rf Vundle.vim/.git vim-go/.git tagbar/.git neocomplete.vim/.git    \
-    #        nerdtree/.git vim-airline/.git vim-fugitive/.git                   \
-    #    vim-nerdtree-tabs/.git undotree/.git vim-easymotion/.git           \
-    #    nerdcommenter/.git
+RUN mkdir -p $DEVHOME/.vim/bundle                                           && \
+    git clone https://github.com/gmarik/vundle $DEVHOME/.vim/bundle/vundle  && \
+    vim +PluginInstall +qall!

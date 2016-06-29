@@ -2,8 +2,12 @@
 "  Initialization {{{1
 "" ==============
 
+    " plugins expect bash - not fish, zsh, etc
+    set shell=bash
+
     " Use Vim settings instead of Vi settings.
     set nocompatible
+    filetype off
 
     " If you can't spell, tough.
     set nospell
@@ -20,25 +24,6 @@
 
     " If vimrc has been modified, re-source it for fast modifications
     autocmd! BufWritePost *vimrc source %
-
-    " Setting up Vundle - the vim plugin bundler
-        let iCanHazVundle=1
-        let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-        if !filereadable(vundle_readme)
-            echo "Installing Vundle.."
-            echo ""
-            silent !mkdir -p ~/.vim/bundle
-            silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-            let iCanHazVundle=0
-        endif
-        set rtp+=~/.vim/bundle/vundle/
-        call vundle#rc()
-
-        if iCanHazVundle == 0
-            echo "Installing Bundles, please ignore key map error messages"
-            echo ""
-            :BundleInstall
-        endif
 
     " Set Leader
     let mapleader = ","
@@ -57,38 +42,43 @@
     " }}}
 
 "" ==================== }}}
-"  Vundle Bundles {{{1
+"  Vundle Plugins {{{1
 "" ==============
 
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#begin()
+
     " Required Plugins
-    Bundle 'gmarik/vundle'
+    Plugin 'gmarik/vundle'
 
-    " Approved Bundles
-    Bundle 'godlygeek/tabular'
-    Bundle 'scrooloose/nerdtree'
-    Bundle 'scrooloose/nerdcommenter'
-    Bundle 'jistr/vim-nerdtree-tabs'
-    Bundle 'fatih/vim-go'
-    Bundle 'Lokaltog/vim-easymotion'
-    Bundle 'majutsushi/tagbar'
-    Bundle 'tpope/vim-repeat'
-    Bundle 'tpope/vim-speeddating'
-    Bundle 'tpope/vim-surround'
-    Bundle 'tpope/vim-pathogen'
-    Bundle 'tpope/vim-fugitive'
-    Bundle 'tpope/vim-git'
-    Bundle 'tpope/vim-commentary'
-    Bundle 'vim-scripts/AutoClose'
-    Bundle 'bling/vim-airline'
-    Bundle 'bling/vim-bufferline'
-    Bundle 'airblade/vim-gitgutter'
-    Bundle 'scrooloose/syntastic'
-    Bundle 'plasticboy/vim-markdown'
-    Bundle 'mbbill/undotree'
-    Bundle 'myusuf3/numbers.vim'
-    Bundle 'ekalinin/Dockerfile.vim'
-    Bundle 'MarcWeber/vim-addon-mw-utils'
+    " Approved Plugins
+    Plugin 'godlygeek/tabular'
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'scrooloose/nerdcommenter'
+    Plugin 'jistr/vim-nerdtree-tabs'
+    Plugin 'fatih/vim-go'
+    Plugin 'Lokaltog/vim-easymotion'
+    Plugin 'majutsushi/tagbar'
+    Plugin 'tpope/vim-repeat'
+    Plugin 'tpope/vim-speeddating'
+    Plugin 'tpope/vim-surround'
+    Plugin 'tpope/vim-pathogen'
+    Plugin 'tpope/vim-fugitive'
+    Plugin 'tpope/vim-git'
+    Plugin 'tpope/vim-commentary'
+    Plugin 'vim-scripts/AutoClose'
+    Plugin 'bling/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
+    Plugin 'bling/vim-bufferline'
+    Plugin 'airblade/vim-gitgutter'
+    Plugin 'scrooloose/syntastic'
+    Plugin 'plasticboy/vim-markdown'
+    Plugin 'mbbill/undotree'
+    Plugin 'myusuf3/numbers.vim'
+    Plugin 'ekalinin/Dockerfile.vim'
+    Plugin 'MarcWeber/vim-addon-mw-utils'
 
+    call vundle#end()
     filetype plugin indent on
 
 "" =============== }}}
@@ -102,11 +92,6 @@
     augroup end
 
     au BufWritePost ~/.bashrc !source %
-
-    augroup PatchDiffHighlight
-        autocmd!
-        autocmd BufEnter *.patch,*.rej,*.diff syntax enable
-    augroup end
 
 
 "" ============= }}}
@@ -123,7 +108,7 @@
         set backspace=2
 
         " Increase History
-        set history=100
+        set history=999
 
         " Enable numbers in the left column
         set number
@@ -211,7 +196,7 @@
         let g:airline#extensions#tabline#enabled = 1
         set laststatus=2
         let g:bufferline_echo = 0
-        let g:airline_theme = 'dark'
+        let g:airline_theme = 'distinguished'
     " }}}
     " Markdown Settings {{{2
     " ----------------
@@ -254,10 +239,16 @@
       let g:neocomplete#sources#syntax#min_keyword_length = 3
       let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'"
     "}}}
-    "" Vim-go {{{2
+    " Syntastic {{{2
+      let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+      let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+    " }}}
+    " Vim-go {{{2
       " --------
       let g:go_fmt_fail_silently = 1
       let g:go_fmt_command = "gofmt" "Explicited the formater plugin (gofmt, goimports, goreturn...)
+
+      let g:go_list_type = "quickfix"
 
       " Show a list of interfaces which is implemented by the type under your cursor
       au FileType go nmap <Leader>s <Plug>(go-implements)

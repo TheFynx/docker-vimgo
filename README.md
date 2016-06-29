@@ -28,6 +28,7 @@ It merges these two projects [vim-go-ide github](https://github.com/farazdagi/vi
 * [errcheck](https://github.com/kisielk/errcheck)
 * [gotags](https://github.com/jstemmer/gotags)
 * [goimports](https://godoc.org/golang.org/x/tools/cmd/goimports)
+* [oracle](https://godoc.org/golang.org/x/tools/cmd/oracle)
 * [gorename](https://godoc.org/golang.org/x/tools/cmd/gorename)
 * [delve](https://github.com/derekparker/delve)
 
@@ -51,7 +52,7 @@ Run this image from within your go workspace. You can than edit your project usi
 
 ```
 cd your/go/workspace
-docker run --rm -tiv `pwd`:/go thefynx/vim-go-ide
+docker run --rm -tiv `pwd`:/project thefynx/vim-go-ide
 ```
 
 ### If Installed via Curl Script
