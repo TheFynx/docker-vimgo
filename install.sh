@@ -52,5 +52,5 @@ sudo chmod +x /usr/local/bin/vimgo
 
 echo -e '>> Setup complete'
 echo -e '\n'
-echo -e '>> Run `vimgo --help` for more info'
+echo -e '>> Run `vimgo --h` for more info'
 
