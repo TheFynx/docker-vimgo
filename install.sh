@@ -22,12 +22,12 @@ where:
     -p  set path (default \$(pwd))"
 
 WORKPATH=$(pwd)
-while getopts ':hs:' option; do
+while getopts ':hp:' option; do
   case "$option" in
     h) echo "$usage"
        exit
        ;;
-    s) WORKPATH=$OPTARG
+    p) WORKPATH=$OPTARG
        ;;
     :) printf "missing argument for -%s\n" "$OPTARG" >&2
        echo "$usage" >&2
