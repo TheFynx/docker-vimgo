@@ -197,6 +197,7 @@
         set laststatus=2
         let g:bufferline_echo = 0
         let g:airline_theme = 'distinguished'
+        let g:airline_powerline_fonts = 1
     " }}}
     " Markdown Settings {{{2
     " ----------------

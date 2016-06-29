@@ -15,15 +15,37 @@ echo -e '>> Setting up vimgo command, will require elevated privileges'
 sudo cat > /usr/local/bin/vimgo <<EOF
 #!/bin/bash
 
+usage="$(basename "$0") [-h] [-p /path/to/project] -- Small docker wrapper script to run vim-go-ide with project path
+
+where:
+    -h  show this help text
+    -p  set path (default \$(pwd))"
+
+WORKPATH=$(pwd)
+while getopts ':hs:' option; do
+  case "$option" in
+    h) echo "$usage"
+       exit
+       ;;
+    s) WORKPATH=$OPTARG
+       ;;
+    :) printf "missing argument for -%s\n" "$OPTARG" >&2
+       echo "$usage" >&2
+       exit 1
+       ;;
+   \?) printf "illegal option: -%s\n" "$OPTARG" >&2
+       echo "$usage" >&2
+       exit 1
+       ;;
+  esac
+done
+shift $((OPTIND - 1))
+
 if [ $(command -v docker) ]; then
-    if [ ${1} != '.' ]; then
-        docker run --rm -tiv ${1}:/project thefynx/vim-go-ide
-    else
-        docker run --rm -tiv `pwd`:/project thefynx/vim-go-ide
-    end
+    docker run --rm -tiv ${WORKPATH}:/project thefynx/vim-go-ide
 else
-    echo -e "This program requires Docker, please install docker"
-end
+    echo -e 'This program requires Docker, please install docker'
+fi
 EOF
 
 sudo chmod +x /usr/local/bin/vimgo

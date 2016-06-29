@@ -1,7 +1,5 @@
 # vim-go-ide Docker image
 
-# WIP; needs a bit more elbow grease
-
 This Docker image adds [Go](https://golang.org/) tools and the following vim plugins to the [official Go image](https://registry.hub.docker.com/_/golang/):
 
 It merges these two projects [vim-go-ide github](https://github.com/farazdagi/vim-go-ide)/[vim-go-ida blog post](http://farazdagi.com/blog/2015/vim-as-golang-ide/) and [go-docker-dev](https://github.com/mbrt/go-docker-dev)
@@ -57,14 +55,19 @@ docker run --rm -tiv `pwd`:/project thefynx/vim-go-ide
 
 ### If Installed via Curl Script
 
-If project folder
+If project folder, will just use `pwd`
 ```
-vimgo .
+vimgo
 ```
 
 From anywhere
 ```
-vimgo /path/to/project
+vimgo -p /path/to/project
+```
+
+Any additional help info
+```
+vimgo -h
 ```
 
 ## Thanks/Ackowledgement
