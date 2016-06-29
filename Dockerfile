@@ -40,8 +40,16 @@ RUN apt-get update                                                      && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 USER dev
+# Set the locale
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
 # install vim plugins
 RUN mkdir -p $DEVHOME/.vim/bundle                                           && \
     git clone https://github.com/gmarik/vundle $DEVHOME/.vim/bundle/vundle  && \
     vim +PluginInstall +qall!
+
+ENTRYPOINT ["cd", "/project"]
+CMD ["vim"]
