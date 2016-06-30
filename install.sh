@@ -32,7 +32,6 @@ while getopts ':hpbc:' option; do
     p) WORKPATH=\$OPTARG
        ;;
     b) CMDARG="/bin/bash"
-       exit
        ;;
     c) CMDARG=\$OPTARG
        ;;
