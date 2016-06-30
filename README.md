@@ -2,7 +2,11 @@
 
 This Docker image adds [Go](https://golang.org/) tools and the following vim plugins to the [official Go image](https://registry.hub.docker.com/_/golang/):
 
-It merges these two projects [vim-go-ide github](https://github.com/farazdagi/vim-go-ide)/[vim-go-ida blog post](http://farazdagi.com/blog/2015/vim-as-golang-ide/) and [go-docker-dev](https://github.com/mbrt/go-docker-dev)
+It merges these two projects [vim-go-ide github](https://github.com/farazdagi/vim-go-ide)/[vim-go-ida blog post](http://farazdagi.com/blog/2015/vim-as-golang-ide/) and [go-docker-dev](https://github.com/mbrt/go-docker-dev) with a little bit more added into the mix.
+
+Here is a [Cheatsheet](dotfiles/home/dev/.vim/CHEATSHEET.md) for all IDE specific bindings available in this setup.
+
+To Access the Cheatsheet from inside Vim, just hit F1
 
 ## Vim Plugins
 
@@ -73,5 +77,5 @@ vimgo -h
 ## Thanks/Ackowledgement
 * A good portion of the Dockerfile comes from [go-docker-dev](https://github.com/mbrt/go-docker-dev)
 * Most of the vim-go .vimrc settings come from [vim-go-ide github](https://github.com/farazdagi/vim-go-ide)
-* Idea and setup comes from both projects
+* Idea and most of the setup comes from both projects
 

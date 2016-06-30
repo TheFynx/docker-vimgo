@@ -356,7 +356,14 @@
         endfunction
         nmap <leader>v :call ToggleVimrc()<CR>
     " }}}
-
+    " Cheatsheet Toggle {{{2
+    " ------------
+        nmap <F1> :!pandoc $CHEATSHEET \| lynx -stdin<cr>:redraw!<cr>
+    " }}}
+    " Markdown Preview Toggle {{{2
+    " ------------
+        nmap <F7> :w<cr>:!pandoc % \| lynx -stdin<cr>:redraw!<cr>
+    " }}}
     " NERDTreeToggle {{{2
     " --------------
     function! NERDTreeToggleOrFocus()

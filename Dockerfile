@@ -6,14 +6,15 @@ ENV DEVHOME /home/dev
 
 # install pagkages
 RUN apt-get update                                                      && \
-    apt-get install -y sudo ncurses-dev libtolua-dev exuberant-ctags    && \
+    apt-get install -y sudo ncurses-dev libtolua-dev \
+            exuberant-ctags pandoc lynx                                 && \
     ln -s /usr/include/lua5.2/ /usr/include/lua                         && \
     ln -s /usr/lib/x86_64-linux-gnu/liblua5.2.so /usr/lib/liblua.so     && \
     cd /tmp                                                             && \
 # build and install vim
     git clone https://github.com/vim/vim.git                            && \
     cd vim                                                              && \
-    ./configure --with-features=huge --enable-luainterp                    \
+    ./configure --with-features=huge --enable-luainterp \
         --enable-gui=no --without-x --prefix=/usr                       && \
     make VIMRUNTIMEDIR=/usr/share/vim/vim74                             && \
     make install                                                        && \
