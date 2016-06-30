@@ -8,6 +8,14 @@ Here is a [Cheatsheet](https://github.com/TheFynx/docker-vimgo/blob/master/dotfi
 
 To Access the Cheatsheet from inside Vim, just hit F1
 
+## Dockerhub Link
+* [vim-go-ide](https://hub.docker.com/r/thefynx/vim-go-ide/)
+
+## File Link
+* [Dockerfile](https://github.com/TheFynx/docker-vimgo/blob/master/Dockerfile)
+* [VIMRC](https://github.com/TheFynx/docker-vimgo/blob/master/dotfiles/home/dev/.vimrc)
+* [BASHRC](https://github.com/TheFynx/docker-vimgo/blob/master/dotfiles/home/dev/.bashrc)
+
 ## Vim Plugins
 
 * [vim-go](https://github.com/fatih/vim-go)
