@@ -3,7 +3,7 @@
 "" ==============
 
     " plugins expect bash - not fish, zsh, etc
-    set shell=bash
+    set shell=bash\ --login
 
     " Use Vim settings instead of Vi settings.
     set nocompatible
@@ -358,7 +358,7 @@
     " }}}
     " Cheatsheet Toggle {{{2
     " ------------
-        nmap <F1> :!pandoc $CHEATSHEET \| lynx -stdin<cr>:redraw!<cr>
+        nmap <F2> :!pandoc $CHEATSHEET \| lynx -stdin<cr>:redraw!<cr>
     " }}}
     " Markdown Preview Toggle {{{2
     " ------------

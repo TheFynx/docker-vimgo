@@ -1,6 +1,6 @@
 # Vim Go IDE Cheatsheet
 
-To view this Cheatsheet in Vim, just hit F1
+To view this Cheatsheet in Vim, just hit `F1`
 
 This is written at a level that should pander to those who have very little vim experience
 and still be useful to those who are far more adept at using it.
@@ -19,7 +19,7 @@ You hit the keys in order, not all at once.
 
 You can find all custom bindings in the vimrc
 
-The vimrc can be accessed inside of vim via: Leader + v
+The vimrc can be accessed inside of vim via: `Leader + v`
 
 ### How to Save and Exit vim
 
@@ -35,41 +35,41 @@ Vim has a bad habit of severaly messing with pasted items with all the automform
 
 So to enter into paste mode, which will paste every exactly how you copied it, there is a shortcut enabled.
 
-* Paste Mode (Toggles on and off): Leader + p
+* Paste Mode (Toggles on and off): `Leader + p`
 
 ### Markdown Preview
 
-* To preview Markdown File: F7
+* To preview Markdown File: `F7`
 
 ### NerdTree Bindings
 
-* Open/Close or Focus on NerdTree: Leader + n
+* Open/Close or Focus on NerdTree: `Leader + n`
 * Switch Between NerdTree and Editor Window
-    * Horizontal Switching: CTRL + H or L
-    * Vertical Switching: CTRL + J or K
+    * Horizontal Switching: `CTRL + H or L`
+    * Vertical Switching: `CTRL + J or K`
 
 ### Vim-GO
 
 #### Tagbar Toggle (Function Viewer)
 
-* Toggle Tagbar: F8
+* Toggle Tagbar: `F8`
 
 #### Build/Test/Coverage Bindings
 
-* go-run: Leader + r
-* go-build: Leader + b
-* go-test: Leader + t
-* go-coverage: Leader + c
+* go-run: `Leader + r`
+* go-build: `Leader + b`
+* go-test: `Leader + t`
+* go-coverage: `Leader + c`
 
 #### Info Bindings
 
-* go-info: Leader + i
+* go-info: `Leader + i`
 
 #### Interface Bindings
 
-* go-implements: Leader + s
+* go-implements: `Leader + s`
 
 #### Godoc Bindings
 
-* go-doc: Leader + g + d
-* go-doc-vertical: Leader + g + v
+* go-doc: `Leader + g + d`
+* go-doc-vertical: `Leader + g + v`
