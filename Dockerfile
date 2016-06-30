@@ -43,9 +43,11 @@ RUN apt-get update                                                      && \
 USER dev
 
 # install vim plugins
-RUN mkdir -p $DEVHOME/.vim/bundle                                           && \
-    git clone https://github.com/gmarik/vundle $DEVHOME/.vim/bundle/vundle  && \
+RUN mkdir -p $DEVHOME/.vim/bundle                                       && \
+    git clone https://github.com/gmarik/vundle \
+              $DEVHOME/.vim/bundle/vundle                               && \
     vim +PluginInstall +qall!
 
-ENTRYPOINT ["cd", "/project"]
+WORKDIR /project
+
 CMD ["vim"]
