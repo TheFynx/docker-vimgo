@@ -1,6 +1,6 @@
 # Vim Go IDE Cheatsheet
 
-To view this Cheatsheet in Vim, just hit `F1`
+To view this Cheatsheet in Vim, just hit `F2`
 
 This is written at a level that should pander to those who have very little vim experience
 and still be useful to those who are far more adept at using it.

@@ -20,14 +20,21 @@ usage="$(basename "$0") [-h] [-p /path/to/project] -- Small docker wrapper scrip
 where:
     -h  show this help text
     -p  set path (default \$(pwd))"
+    -b  Enter container at Bash instead of Vim
+    -c  Choose command to run in container instead of vim
 
 WORKPATH=$(pwd)
-while getopts ':hp:' option; do
+while getopts ':hpbc:' option; do
   case "$option" in
     h) echo "$usage"
        exit
        ;;
     p) WORKPATH=$OPTARG
+       ;;
+    b) CMDARG="/bin/bash"
+       exit
+       ;;
+    c) CMDARG=$OPTARG
        ;;
     :) printf "missing argument for -%s\n" "$OPTARG" >&2
        echo "$usage" >&2
@@ -42,7 +49,7 @@ done
 shift $((OPTIND - 1))
 
 if [ $(command -v docker) ]; then
-    docker run --rm -tiv ${WORKPATH}:/project thefynx/vim-go-ide
+    docker run --rm -tiv ${WORKPATH}:/project thefynx/vim-go-ide ${CMDARG}
 else
     echo -e 'This program requires Docker, please install docker'
 fi

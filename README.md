@@ -6,7 +6,7 @@ It merges these two projects [vim-go-ide github](https://github.com/farazdagi/vi
 
 Here is a [Cheatsheet](https://github.com/TheFynx/docker-vimgo/blob/master/dotfiles/home/dev/.vim/CHEATSHEET.md) for all IDE specific bindings available in this setup.
 
-To Access the Cheatsheet from inside Vim, just hit F1
+To Access the Cheatsheet from inside Vim, just hit `F2`
 
 ## Dockerhub Link
 * [vim-go-ide](https://hub.docker.com/r/thefynx/vim-go-ide/)
