@@ -48,5 +48,3 @@ fi
 export GOPATH='/go'
 
 export PATH="$PATH:$GOPATH/bin"
-
-export CHEATSHEET="${HOME}/.vim/CHEATSHEET.md"

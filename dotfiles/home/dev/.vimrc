@@ -358,7 +358,7 @@
     " }}}
     " Cheatsheet Toggle {{{2
     " ------------
-        nmap <F2> :!pandoc $CHEATSHEET \| lynx -stdin<cr>:redraw!<cr>
+        nmap <F2> :!pandoc ~/.vim/CHEATSHEET.md \| lynx -stdin<cr>:redraw!<cr>
     " }}}
     " Markdown Preview Toggle {{{2
     " ------------

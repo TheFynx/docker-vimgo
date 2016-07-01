@@ -48,6 +48,8 @@ RUN mkdir -p $DEVHOME/.vim/bundle                                       && \
               $DEVHOME/.vim/bundle/vundle                               && \
     vim +PluginInstall +qall!
 
+VOLUME /project
+
 WORKDIR /project
 
 CMD ["vim"]

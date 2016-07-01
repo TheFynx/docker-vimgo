@@ -12,20 +12,20 @@ fi
 
 echo -e '>> Setting up vimgo command, will require elevated privileges'
 
-sudo cat > /usr/local/bin/vimgo <<EOF
+cat > /tmp/vimgo <<EOF
 #!/bin/bash
 
 usage="\$(basename "\$0") [-h] [-p /path/to/project] [-b] [-c command] -- Small docker wrapper script to run vim-go-ide with project path
 
 where:
     -h  show this help text
-    -p  set path (default \$(pwd))
+    -p  set path (default is currently \$(pwd))
     -b  Enter container at Bash instead of Vim
     -c  Choose command to run in container instead of vim"
 
 WORKPATH=\$(pwd)
-while getopts ':hpbc:' option; do
-  case "\$option" in
+while getopts 'p:c:hb' opt; do
+  case "\$opt" in
     h) echo "\$usage"
        exit
        ;;
@@ -54,9 +54,11 @@ else
 fi
 EOF
 
-sudo chmod +x /usr/local/bin/vimgo
+chmod +x /tmp/vimgo
+
+su -c "mv /tmp/vimgo /usr/local/bin/vimgo"
 
 echo -e '>> Setup complete'
 echo -e '\n'
-echo -e '>> Run `vimgo --h` for more info'
-
+echo -e '>> Run `vimgo -h` for more info'
+echo -e '\n'
