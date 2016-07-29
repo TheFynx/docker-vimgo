@@ -29,6 +29,7 @@ RUN apt-get update                                                      && \
     go get github.com/golang/lint/golint                                && \
     go get github.com/kisielk/errcheck                                  && \
     go get github.com/jstemmer/gotags                                   && \
+    curl https://glide.sh/get | sh                                      && \
 # add dev user
     mkdir -p /project                                                   && \
     adduser dev --disabled-password --gecos ""                          && \
@@ -52,4 +53,4 @@ VOLUME /project
 
 WORKDIR /project
 
-CMD ["vim"]
+CMD ["bash -c vim"]
