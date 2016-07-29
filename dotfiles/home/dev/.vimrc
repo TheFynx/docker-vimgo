@@ -26,7 +26,7 @@
     autocmd! BufWritePost *vimrc source %
 
     " Set Leader
-    let mapleader = ","
+    let g:mapleader = ","
 
     " Wildmode options {{{2
     " ----------------
@@ -134,8 +134,7 @@
     " Tabbing and Spaces {{{2
     " ------------------
         " Use 4 spaces instead of tabs
-        set ts=4
-        set sts=4
+        set tabstop=4
         set shiftwidth=4
         set expandtab
 
@@ -212,15 +211,15 @@
     " --------
 
       " General properties
-      let NERDTreeDirArrows=1
-      let NERDTreeMinimalUI=1
-      let NERDTreeIgnore=['\.o$', '\.pyc$', '\.php\~$']
-      let NERDTreeWinSize = 35
+      let g:NERDTreeDirArrows=1
+      let g:NERDTreeMinimalUI=1
+      let g:NERDTreeIgnore=['\.o$', '\.pyc$', '\.php\~$']
+      let g:NERDTreeWinSize = 35
 
       " Make sure that when NT root is changed, Vim's pwd is also updated
-      let NERDTreeChDirMode = 2
-      let NERDTreeShowLineNumbers = 1
-      let NERDTreeAutoCenter = 1
+      let g:NERDTreeChDirMode = 2
+      let g:NERDTreeShowLineNumbers = 1
+      let g:NERDTreeAutoCenter = 1
 
     " Open NERDTree on startup, when no file has been specified
     autocmd VimEnter * if !argc() | NERDTree | endif
@@ -245,7 +244,7 @@
       let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
     " }}}
     " Vim-go {{{2
-      " --------
+    " --------
       let g:go_fmt_fail_silently = 1
       let g:go_fmt_command = "gofmt" "Explicited the formater plugin (gofmt, goimports, goreturn...)
 
