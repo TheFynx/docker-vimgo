@@ -57,4 +57,4 @@ VOLUME /project
 
 WORKDIR /project
 
-CMD ["bash -c vim"]
+CMD /bin/bash -c /usr/bin/vim
